@@ -1,0 +1,25 @@
+{
+  "name": "exceldbbi",
+  "version": "1.0.0",
+  "description": "Excel -> DB connection, upload data to DB whenever Excel file updated",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoeJuzaAltis/exceldbbi.git"
+  },
+  "keywords": [
+    "db",
+    "excel",
+    "nodejs",
+    "node"
+  ],
+  "author": "NoeJuza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NoeJuzaAltis/exceldbbi/issues"
+  },
+  "homepage": "https://github.com/NoeJuzaAltis/exceldbbi#readme"
+}
