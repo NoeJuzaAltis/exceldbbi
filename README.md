@@ -35,8 +35,8 @@ ADMINPASS=youradminpassword
   ]
 }
 ```
-## DATA FORMAT IN THE EXCEL SHEET
-the data in your export sheet should look like this :
+## DATA FORMAT IN THE EXCEL SHEET(S)
+the data in your export sheet(s) should look like this :
 |  name1  |  name2  |  name3  |  name4  | etc... |
 | ---     | ---     | ---     | ---     | ----   |
 | value01 | value02 | value03 | value04 | etc... |
