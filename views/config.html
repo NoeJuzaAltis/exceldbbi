@@ -67,7 +67,7 @@
                 var container = document.getElementById("container"); 
                 
                 var lst = repsheetsjson.value;
-                console.log(lst)
+                //console.log(lst)
                 lst.forEach( (pagetitle ,index) => {
                     var tr = document.createElement('tr');
                     var tdSheet = document.createElement('td');
@@ -127,7 +127,7 @@
             var btnDell = document.createElement('input')
             var btnAsIs = document.createElement('input')
             btnAsIs.setAttribute("type","button")
-            btnAsIs.setAttribute("value","AsIs")
+            btnAsIs.setAttribute("value","As Is")
 
             btnDell.setAttribute("type","button")
             btnDell.setAttribute("value","Suppr.")
@@ -142,6 +142,7 @@
             inpSheet.setAttribute("name","sheetInput[" + tr.rowIndex +  "]")
             tdName.appendChild(inpName)
             tdName.appendChild(btnDell)
+            tdName.appendChild(btnAsIs)
             tdSheet.append(inpSheet)
             tr.append(tdSheet)
             tr.append(tdName)

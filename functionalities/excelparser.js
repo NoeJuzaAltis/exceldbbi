@@ -42,16 +42,24 @@ function parseExcelToJSONdocument(rootdir,file,lstsheetstoRead,lstnamestoExport)
 
 function readLaSheetExcel(file, sheetname, title){
     var returnObject = [];
-    var JsonInterne = {};
+    var datas = []
     var promiseint = new Promise((resolve,reject) => {
         readXlsxFile(file,{sheet : sheetname }).then((rows) => {
-            for (let i0 = 0; i0 < rows[0].length; i0++) {
-                var name = rows[0][i0]
-                JsonInterne[name] = rows[1][i0]
-                //console.log(JsonInterne)
-            }
+            rows.forEach( (row,index) => {
+                var JsonInterne = {};
+                //console.log(row)
+                //console.log(index)
+                if (index != 0) {
+                    for (let i0 = 0; i0 < row.length; i0++) {
+                        var name = rows[0][i0]
+                        JsonInterne[name] = row[i0]
+                    }
+                    datas.push(JsonInterne)
+                }
+            });
+            //console.log(datas);
             if (returnObject != {}) {
-                returnObject["datas"] = JsonInterne;
+                returnObject["datas"] = datas;
                 returnObject["title"] = title;
                 resolve(returnObject);
             }

@@ -72,7 +72,7 @@ function insert(db,dbo) {
         var lstprmInsert = []
         srcColsToCreate.forEach(colToCreate => {
             //console.log(colToCreate)
-            console.log(colToCreate)
+            //console.log(colToCreate)
             var name = colToCreate["name"]
             var datas = colToCreate["datas"]
 
@@ -85,7 +85,7 @@ function insert(db,dbo) {
             } }*/
             
             lstprmInsert.push(new Promise((resolve, reject) =>{
-                dbo.collection(name).insertOne(datas, function(err, res) {
+                dbo.collection(name).insertMany(datas, function(err, res) {
                     if (err) throw err;
                     console.log("Number of documents inserted: " + res.insertedCount); 
                     resolve()
