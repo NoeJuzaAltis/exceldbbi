@@ -2,21 +2,22 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
-    <title>Tests Excel -> DB</title>
+    <title>Envoi</title>
     <link rel="stylesheet" type="text/css" href="./style.css">
   </head>
   <body>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <div id="main">
-      <h1>Upload de fichier vers mongoDB local</h1>
+      <h1>Upload de fichier excel vers la base de donnée</h1>
       <div id="pageloader">
         <img src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/images/loader-large.gif" alt="processing..." />
       </div>
       <form action="/fileSelect" method="post" enctype="multipart/form-data">
-        <input name="filetoupload" type="file" required="true" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+        <input name="filetoupload" type="file" required="true" accept=.xlsx,.xlsm,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
         <input type="submit" id="submit-btn" value="Envoyer">
       </form>
     </div>
+    <a href="config">Page de configuration</a>
     <script>
       $("#submit-btn").click(function(){
 

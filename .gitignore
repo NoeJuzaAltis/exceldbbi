@@ -1,3 +1,6 @@
 uploads/*
 node_modules/
 .env
+results/*
+authsessions.json
+conf.json

@@ -1,0 +1,54 @@
+*{
+    font-family: Arial,Helvetica,sans-serif;
+}
+.title{
+    text-align: center;
+}
+form table td{
+    text-align: right;
+    border: 10px;
+}
+.sheetinput{
+    text-align-last: center;
+}
+.sheetinput input{
+    width: 96%;
+}
+button{
+    width: 100%;
+}
+form img{
+    height: 100%;
+}
+.centercontainer{
+    text-align: center;
+}
+table{
+    text-align: center;
+}
+.main{
+    max-width: fit-content;
+    margin: auto;
+    background: white;
+    padding: 1%;
+}
+.tooltip{
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+.tooltip .tooltiptext{
+    display: none;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
+}
+.tooltip:hover .tooltiptext {
+    display: block;
+}
