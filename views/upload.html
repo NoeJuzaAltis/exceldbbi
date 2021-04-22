@@ -18,17 +18,7 @@
       </form>
     </div>
     <a href="config">Page de configuration</a>
-    <script>
-      fetch('extension', {method:'GET'}).then(function(response) {
-            response.json().then((rep) =>{
-                document.getElementById("fileup").setAttribute("accept", "." + rep["value"])
-            })
-        })
-      $("#submit-btn").click(function(){
-
-        $("#pageloader").show();
-
-      });
+    <script src="./upload.js">
     </script>
   </body>
 </html>
