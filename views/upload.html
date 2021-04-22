@@ -13,12 +13,17 @@
         <img src="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/images/loader-large.gif" alt="processing..." />
       </div>
       <form action="/fileSelect" method="post" enctype="multipart/form-data">
-        <input name="filetoupload" type="file" required="true" accept=.xlsx,.xlsm,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+        <input name="filetoupload" type="file" id="fileup" required="true"/>
         <input type="submit" id="submit-btn" value="Envoyer">
       </form>
     </div>
     <a href="config">Page de configuration</a>
     <script>
+      fetch('extension', {method:'GET'}).then(function(response) {
+            response.json().then((rep) =>{
+                document.getElementById("fileup").setAttribute("accept", "." + rep["value"])
+            })
+        })
       $("#submit-btn").click(function(){
 
         $("#pageloader").show();
