@@ -112,18 +112,24 @@ function insert(db,dbo) {   // insert datas into the database, return the promis
     } )
     return promtoreturn //return the main promise
 }
-
-function testConnection(Dbhost,databaseName) {  // used to test conneciton to a database
+/**
+ * 
+ * @param {String} Dbhost 
+ * @param {String} databaseName 
+ * @returns {Boolean} good connect or not
+ */
+async function testConnection(Dbhost,databaseName) {  // used to test conneciton to a database
     var host = Dbhost;                  //same as in the main function
     var destinationDb = databaseName;   //same
     var url = host + destinationDb;     //same
-    MongoClient.connect(url, function(err, db) {    // try to connect to the client
-        if (err){
-            return false;   //return false if there is an error
-        }
+    const client = new MongoClient(url,{useUnifiedTopology: true})
+    try {
+        await client.connect()
         console.log("Connexion fonctionelle !");    // log functionning connection 
-        db.close(); // close database connection
-        return true // return true to say that the database connection is working
-    });
-    
+        await client.close()
+        return true
+    } catch (error) {
+        await client.close()
+        return false
+    }
 }

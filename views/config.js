@@ -20,11 +20,13 @@ fetch('lstSheets', {method:'GET'}).then(function(repsheets) {
         var lst = repsheetsjson.value;
         //console.log(lst)
         lst.forEach( (pagetitle ,index) => {
-            var tr = document.createElement('tr');
-            var tdSheet = document.createElement('td');
-            tdSheet.setAttribute("class","sheetinput")
+            var tr = document.createElement('div');
+            tr.setAttribute("class","row");
+            var tdSheet = document.createElement('div');
+            tdSheet.setAttribute("class","sheetinput col-md")
             var inpSheet = document.createElement('input');
-            var tdName = document.createElement('td');
+            var tdName = document.createElement('div');
+            tdName.setAttribute("class","col-md")
             var inpName = document.createElement('input')
             var btnDell = document.createElement('input')
             var btnAsIs = document.createElement('input')
@@ -32,9 +34,13 @@ fetch('lstSheets', {method:'GET'}).then(function(repsheets) {
             btnAsIs.setAttribute("value","As Is")
             btnDell.setAttribute("type","button")
             btnDell.setAttribute("value","Suppr.")
+            btnAsIs.setAttribute("class","btn btn-success")
+            btnDell.setAttribute("class","btn btn-danger")
+
             inpSheet.setAttribute("type","text")
             inpSheet.setAttribute("placeholder",pagetitle)
             inpSheet.setAttribute("required","true")
+            inpSheet.setAttribute("class","form-control")
             inpSheet.setAttribute("name","sheetInput[" + index +  "]")
             
             fetch('lstNames', {method:'GET'}).then(function(repnames) {
@@ -44,6 +50,7 @@ fetch('lstSheets', {method:'GET'}).then(function(repsheets) {
                     inpName.setAttribute("type","text")
                     inpName.setAttribute("placeholder",expname)
                     inpName.setAttribute("required","true")
+                    inpName.setAttribute("class","form-control")
                     inpName.setAttribute("name","expNameInput[" + index +  "]")
                 })
             })
@@ -55,8 +62,8 @@ fetch('lstSheets', {method:'GET'}).then(function(repsheets) {
             tr.append(tdSheet)
             tr.append(tdName)
             container.append(tr)
-            btnDell.setAttribute("onClick","delRow(" + tr.rowIndex + ")")
-            btnAsIs.setAttribute("onClick","asIs(" + tr.rowIndex + ")")
+            btnDell.setAttribute("onClick","delRow(" + Array.from(tr.parentNode.children).indexOf(tr)+ ")")
+            btnAsIs.setAttribute("onClick","asIs(" + Array.from(tr.parentNode.children).indexOf(tr) + ")")
         }); 
         container.appendChild
     })
@@ -70,15 +77,19 @@ function delRow(rowToDelete) {
 function addRow() {
     var add = document.getElementById("container"); 
     var tr = document.createElement('tr');
-    var tdSheet = document.createElement('td');
-    tdSheet.setAttribute("class","sheetinput")
+    tr.setAttribute("class","row")
+    var tdSheet = document.createElement('div');
+    tdSheet.setAttribute("class","sheetinput col-md")
     var inpSheet = document.createElement('input');
-    var tdName = document.createElement('td');
+    var tdName = document.createElement('div');
+    tdName.setAttribute("class","col-md")
     var inpName = document.createElement('input')
     var btnDell = document.createElement('input')
     var btnAsIs = document.createElement('input')
     btnAsIs.setAttribute("type","button")
     btnAsIs.setAttribute("value","As Is")
+    btnAsIs.setAttribute("class","btn btn-success")
+    btnDell.setAttribute("class","btn btn-danger")
 
     btnDell.setAttribute("type","button")
     btnDell.setAttribute("value","Suppr.")
@@ -88,7 +99,10 @@ function addRow() {
     inpName.setAttribute("type","text")
     inpName.setAttribute("placeholder","Nom de l'export dans la bdd")
     inpName.setAttribute("required","true")
-    container.append(tr)
+    inpName.setAttribute("class","form-control")
+    inpSheet.setAttribute("class","form-control")
+
+    container.appendChild(tr)
     inpName.setAttribute("name","expNameInput[" + tr.rowIndex +  "]")
     inpSheet.setAttribute("name","sheetInput[" + tr.rowIndex +  "]")
     tdName.appendChild(inpName)
@@ -101,7 +115,7 @@ function addRow() {
 }
 function asIs(index) {
     var delcontainer = document.getElementById("container"); 
-    var nameplaceholder = delcontainer.children[index].children[1].children[0].placeholder
+    var nameplaceholder = delcontainer.children[index].children[1].children[0].placeholder 
     var sheetplaceholder = delcontainer.children[index].children[0].children[0].placeholder
     delcontainer.children[index].children[1].children[0].setAttribute("value",nameplaceholder)
     delcontainer.children[index].children[0].children[0].setAttribute("value",sheetplaceholder)
@@ -111,11 +125,9 @@ function resetRow() {
     var lstchilds = Array.from(delcontainer.children)
 
     lstchilds.forEach( (element,index) => {
-        if (index >= 5) {
-            delcontainer.children[index].children[1].children[1].setAttribute("onClick","delRow(" + index + ")")
-            delcontainer.children[index].children[1].children[2].setAttribute("onClick","asIs(" + index + ")")
-            delcontainer.children[index].children[1].children[0].setAttribute("name","expNameInput[" + index + "]")
-            delcontainer.children[index].children[0].children[0].setAttribute("name","sheetInput[" + index + "]")
-        }
+        delcontainer.children[index].children[1].children[1].setAttribute("onClick","delRow(" + index + ")")
+        delcontainer.children[index].children[1].children[2].setAttribute("onClick","asIs(" + index + ")")
+        delcontainer.children[index].children[1].children[0].setAttribute("name","expNameInput[" + index + "]")
+        delcontainer.children[index].children[0].children[0].setAttribute("name","sheetInput[" + index + "]")
     });
 }

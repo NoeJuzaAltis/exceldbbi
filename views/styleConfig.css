@@ -1,54 +1,42 @@
 *{
     font-family: Arial,Helvetica,sans-serif;
 }
+html,body{
+    background-image: url("./background.png");
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+}
+.main{
+    border-radius: 1.5vh;
+    margin: auto;
+    color: white;
+}
+a{
+    color: #F68620;
+}
+a:hover{
+    color: #F8B06C;
+}
+input[type="text"],input[type="url"]{
+    width: 100%;
+}
 .title{
     text-align: center;
 }
-form table td{
-    text-align: right;
-    border: 10px;
+.toppadd{
+    padding-top: 1vh;
 }
 .sheetinput{
     text-align-last: center;
 }
-.sheetinput input{
-    width: 96%;
-}
 button{
     width: 100%;
-}
-form img{
-    height: 100%;
-}
-.centercontainer{
-    text-align: center;
-}
-table{
-    text-align: center;
 }
 .main{
     max-width: fit-content;
     margin: auto;
-    background: white;
+    background-color: rgba(0,0,0,0.5) !important;
     padding: 1%;
-}
-.tooltip{
-    position: relative;
-    display: inline-block;
-    border-bottom: 1px dotted black;
-}
-.tooltip .tooltiptext{
-    display: none;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 5px 0;
-    border-radius: 6px;
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -60px; /* Use half of the width (120/2 = 60), to center the tooltip */
-}
-.tooltip:hover .tooltiptext {
-    display: block;
 }

@@ -1,6 +1,54 @@
 *{
   font-family: Arial,Helvetica,sans-serif;
 }
+html,body{
+  background-image: url("./background.png");
+  background-size: 80%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+}
+.drop-aera{
+  background-color: rgba( 255, 255, 255, 0.8 );
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 50%;
+  border: 1px dashed black;
+}
+a{
+  color: #F68620;
+}
+a:hover{
+  color: #F8B06C;
+}
+.placeholder{
+  background-image: url("./excelPlaceHolder.png");
+}
+.dropped{
+  background-image: url("./excelColored.png");
+}
+#main{
+  margin: 0;
+  height: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+  border-radius: 1.5vh;
+  padding: 2vh;
+  color: white;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  background-color: rgba(0,0,0,0.5) !important;
+}
+.visible{
+  display: block;
+}
 #pageloader
 {
   background: rgba( 255, 255, 255, 0.8 );

@@ -141,37 +141,39 @@ app.route('/config').get((req, res) => {    // when the user tries to get the co
     if (session != null) {
         /*console.log(req.body.sheetInput) // debug
         console.log(req.body.expNameInput) // debug */
-        if (mongo.testConnection(req.body.databaseUrl ,req.body.databaseEndpointName)) { // tests if the mongo connection is good with the informations passed by the user
-            dbhost = req.body.databaseUrl;  // sets database host as what is passed by the user
-            databaseendpointname = req.body.databaseEndpointName;   // Sets endpoint as what is defined by user
-            //console.log(req.body.extension) // debug
-            if (req.body.extension == "xlsx" || req.body.extension == "xlsm") { // if the extension is xlsx or xlsm
-
-                fs.unwatchFile(watchedFile)  // stop watching for changes on old file
-                console.log(`Stopped watching for changes on ${watchedFile}`); // log that the server stopped to look for change on the old file
-                extension = req.body.extension  // sets the new extension as what is defined by the user
-                watchedFile = path.join(__dirname,'uploads/file.' + extension)  // sets the new watched file with the new extension
-                watchChanges(watchedFile)   // watch for changes on the new file
-                lstSheetsToScan = req.body.sheetInput   // set the variable as the user defined value
-                lstExportNames = req.body.expNameInput  // same
-                var exporConfig = {};   // create a new empty Javascript Object
-                exporConfig.host = req.body.databaseUrl // sets the new config property as what the user defined
-                exporConfig.endpoint = req.body.databaseEndpointName //same
-                exporConfig.extension = req.body.extension//same
-                exporConfig.sheetstoscan = req.body.sheetInput//same
-                exporConfig.exportnames = req.body.expNameInput//same
-                var data = JSON.stringify(exporConfig)//stringify the object to insert it in a file
-                fs.writeFileSync("conf.json",data);// write the new config inside conf.json
-                res.send("Paramètres appliqués avec succès");   // notify the user that the parameters are 👌
-
+        var ok = mongo.testConnection(req.body.databaseUrl, req.body.databaseEndpointName)
+        ok.then((okval) =>{
+            if (okval) { // tests if the mongo connection is good with the informations passed by the user
+                dbhost = req.body.databaseUrl;  // sets database host as what is passed by the user
+                databaseendpointname = req.body.databaseEndpointName;   // Sets endpoint as what is defined by user
+                //console.log(req.body.extension) // debug
+                if (req.body.extension == "xlsx" || req.body.extension == "xlsm") { // if the extension is xlsx or xlsm
+                    fs.unwatchFile(watchedFile)  // stop watching for changes on old file
+                    console.log(`Stopped watching for changes on ${watchedFile}`); // log that the server stopped to look for change on the old file
+                    extension = req.body.extension  // sets the new extension as what is defined by the user
+                    watchedFile = path.join(__dirname,'uploads/file.' + extension)  // sets the new watched file with the new extension
+                    watchChanges(watchedFile)   // watch for changes on the new file
+                    lstSheetsToScan = req.body.sheetInput   // set the variable as the user defined value
+                    lstExportNames = req.body.expNameInput  // same
+                    var exporConfig = {};   // create a new empty Javascript Object
+                    exporConfig.host = req.body.databaseUrl // sets the new config property as what the user defined
+                    exporConfig.endpoint = req.body.databaseEndpointName //same
+                    exporConfig.extension = req.body.extension//same
+                    exporConfig.sheetstoscan = req.body.sheetInput//same
+                    exporConfig.exportnames = req.body.expNameInput//same
+                    var data = JSON.stringify(exporConfig)//stringify the object to insert it in a file
+                    fs.writeFileSync("conf.json",data);// write the new config inside conf.json
+                    res.send("Paramètres appliqués avec succès");   // notify the user that the parameters are 👌
+    
+                }
+                else{   // extension problem
+                    res.send("L'extensions doit être soit \"xlsx\" soit \"xlsm\"")
+                }
             }
-            else{   // extension problem
-                res.send("L'extensions doit être soit \"xlsx\" soit \"xlsm\"")
+            else{ // Mongodb connexion problem
+                res.send("il y a eu un problème avec votre requête, paramètres refusés")
             }
-        }
-        else{ // Mongodb connexion problem
-            res.send("il y a eu un problème avec votre requête, paramètres refusés")
-        }
+        })
     }
     else{// unauthentified session
         res.status(401).send("unauthorised");
