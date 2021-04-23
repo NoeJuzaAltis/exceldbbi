@@ -9,9 +9,10 @@ module.exports = {
 var MongoClient = require('mongodb').MongoClient;   // mongo connection
 const fs = require('fs');   // filesystem
 var path = require('path'); // require path
-var srcColsToCreate = [];   // columns to create
+var srcColsToCreate;   // columns to create
 
 function exportDatas(folderWithTheFiles,Dbhost,databaseName) {  // main function, export the json datas to a mongodb database
+    srcColsToCreate = [] // reinit cols
     var host = Dbhost || "mongodb://localhost:27017/"   // database host
     var destinationDb = databaseName || "biExports";    // database endpoint
     var url = host + destinationDb;                     // full database url
@@ -49,7 +50,7 @@ function exportDatas(folderWithTheFiles,Dbhost,databaseName) {  // main function
             srcColsToCreate.forEach(colToCreate => {    // foreach col(lection) to create
                 var name = colToCreate["name"]  // retrieve the col name
                 lstpromDrop.push(new Promise( (resolve, reject) => { // add the promise to drop the collection to the array
-                    internalprom = dbo.collection(name).deleteOne({})  // internal promise that will drop the collection
+                    internalprom = dbo.dropCollection(name)  // internal promise that will drop the collection
                     internalprom.then(() =>{    // when the collection is dropped
                         console.log("emptied collection: " + name) // log the empting
                         resolve();  // resolve the promise
