@@ -64,7 +64,7 @@ Contributions are what make the open source community such an amazing place to b
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/noejuza/exceldbbi.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/NoeJuzaAltis/exceldbbi.svg?style=for-the-badge
 [contributors-url]: https://github.com/NoeJuzaAltis/exceldbbi/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/NoeJuzaAltis/exceldbbi.svg?style=for-the-badge
 [forks-url]: https://github.com/NoeJuzaAltis/exceldbbi/network/members
