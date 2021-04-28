@@ -1,7 +1,9 @@
 # exceldbbi
 Excel -> DB connection, upload data to DB whenever Excel file updated
 ##Install
-```git clone https://github.com/NoeJuzaAltis/exceldbbi.git```
+```
+git clone https://github.com/NoeJuzaAltis/exceldbbi.git
+```
 ## Prerequisites
 `npm install`
 `(local) mongodb without auth (trusted network)`
