@@ -75,4 +75,4 @@ Contributions are what make the open source community such an amazing place to b
 [license-shield]: https://img.shields.io/github/license/NoeJuzaAltis/exceldbbi.svg?style=for-the-badge
 [license-url]: https://github.com/NoeJuzaAltis/exceldbbi/blob/main/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/noejuzapro
+[linkedin-url]: https://linkedin.com/in/no%C3%A9%-juzan-a3aa88210
