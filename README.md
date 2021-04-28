@@ -73,6 +73,6 @@ Contributions are what make the open source community such an amazing place to b
 [issues-shield]: https://img.shields.io/github/issues/NoeJuzaAltis/exceldbbi.svg?style=for-the-badge
 [issues-url]: https://github.com/NoeJuzaAltis/exceldbbi/issues
 [license-shield]: https://img.shields.io/github/license/NoeJuzaAltis/exceldbbi.svg?style=for-the-badge
-[license-url]: https://github.com/NoeJuzaAltis/exceldbbi/blob/master/LICENSE
+[license-url]: https://github.com/NoeJuzaAltis/exceldbbi/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/noejuzapro
