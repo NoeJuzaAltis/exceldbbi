@@ -57,50 +57,35 @@ app.listen(port, () => {  // Let the app listen on the defined port for requests
 //------------------------------------------------------------------------------------------------------
 // "API" to access some backend data from frontend (mostly for the config page)
 app.get('/dbHost', (req,res) =>{    // sends the database host/url
-    var session = authsessions.find(session => session.id === req.cookies.session)  // checks if the user is authentified
-    if (session != null) {  // user is authentified
-        res.json( {"value":dbhost} );
-    }
-    else{
-        res.status(401).send("Unauthorized")
-    }
+    checkforApiAccess(req,res,dbhost);
 })
 app.get('/extension', (req,res) =>{ // sends the extension of the file
-    var session = authsessions.find(session => session.id === req.cookies.session)  // checks if the user is authentified
-    if (session != null) {  // user is authentified
-        res.json( {"value":extension} );
-    }
-    else{
-        res.status(401).send("Unauthorized")
-    }
+    checkforApiAccess(req,res,extension);
 })
 app.get('/dbEndpoint', (req,res) =>{// sends the database endpoint
-    var session = authsessions.find(session => session.id === req.cookies.session)  // checks if the user is authentified
-    if (session != null) {  // user is authentified
-        res.json( {"value":databaseendpointname} );
-    }
-    else{
-        res.status(401).send("Unauthorized")
-    }
+    checkforApiAccess(req,res,databaseendpointname);
 })
 app.get('/lstSheets', (req,res) =>{ // sends the array of sheets to read 
-    var session = authsessions.find(session => session.id === req.cookies.session)  // checks if the user is authentified
-    if (session != null) {  // user is authentified
-        res.json( {"value":lstSheetsToScan} );
-    }
-    else{
-        res.status(401).send("Unauthorized")
-    }
+    checkforApiAccess(req,res,lstSheetsToScan);
 })
 app.get('/lstNames', (req, res) =>{ // sends the array of export names
+    checkforApiAccess(req,res,lstExportNames);
+});
+/**
+ * Checks if the session is authenticated and returns the good results if so
+ * @param {*} req request
+ * @param {*} res result
+ * @param {*} dataforauthenticated data that will be sent to result if auth
+ */
+function checkforApiAccess(req,res,dataforauthenticated) {
     var session = authsessions.find(session => session.id === req.cookies.session)  // checks if the user is authentified
     if (session != null) {  // user is authentified
-        res.json( {"value":lstSheetsToScan} );
+        res.json( {"value":dataforauthenticated} );
     }
     else{
         res.status(401).send("Unauthorized")
     }
-});
+}
 //------------------------------------------------------------------------------------------------------
 // Routes
 app.get('/', (req, res) => {  // get on site root
