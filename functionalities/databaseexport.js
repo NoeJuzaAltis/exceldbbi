@@ -114,7 +114,7 @@ function insert(db,dbo) {   // insert datas into the database, return the promis
     return promtoreturn //return the main promise
 }
 /**
- * 
+ * Test the connection to a database
  * @param {String} Dbhost 
  * @param {String} databaseName 
  * @returns {Boolean} good connect or not

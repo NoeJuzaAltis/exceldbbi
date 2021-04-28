@@ -57,19 +57,49 @@ app.listen(port, () => {  // Let the app listen on the defined port for requests
 //------------------------------------------------------------------------------------------------------
 // "API" to access some backend data from frontend (mostly for the config page)
 app.get('/dbHost', (req,res) =>{    // sends the database host/url
-    res.json( {"value":dbhost} );
+    var session = authsessions.find(session => session.id === req.cookies.session)  // checks if the user is authentified
+    if (session != null) {  // user is authentified
+        res.json( {"value":dbhost} );
+    }
+    else{
+        res.status(401).send("Unauthorized")
+    }
 })
 app.get('/extension', (req,res) =>{ // sends the extension of the file
-    res.json( {"value":extension} );
+    var session = authsessions.find(session => session.id === req.cookies.session)  // checks if the user is authentified
+    if (session != null) {  // user is authentified
+        res.json( {"value":extension} );
+    }
+    else{
+        res.status(401).send("Unauthorized")
+    }
 })
 app.get('/dbEndpoint', (req,res) =>{// sends the database endpoint
-    res.json( {"value":databaseendpointname} );
+    var session = authsessions.find(session => session.id === req.cookies.session)  // checks if the user is authentified
+    if (session != null) {  // user is authentified
+        res.json( {"value":databaseendpointname} );
+    }
+    else{
+        res.status(401).send("Unauthorized")
+    }
 })
 app.get('/lstSheets', (req,res) =>{ // sends the array of sheets to read 
-    res.json( {"value":lstSheetsToScan} );
+    var session = authsessions.find(session => session.id === req.cookies.session)  // checks if the user is authentified
+    if (session != null) {  // user is authentified
+        res.json( {"value":lstSheetsToScan} );
+    }
+    else{
+        res.status(401).send("Unauthorized")
+    }
 })
 app.get('/lstNames', (req, res) =>{ // sends the array of export names
-    res.json({"value":lstExportNames});
+    var session = authsessions.find(session => session.id === req.cookies.session)  // checks if the user is authentified
+    if (session != null) {  // user is authentified
+        res.json( {"value":lstSheetsToScan} );
+    }
+    else{
+        res.status(401).send("Unauthorized")
+    }
 });
 //------------------------------------------------------------------------------------------------------
 // Routes
