@@ -4,3 +4,4 @@ node_modules/
 results/*
 authsessions.json
 conf.json
+views/background.png
