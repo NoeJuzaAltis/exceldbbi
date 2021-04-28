@@ -13,7 +13,15 @@ git clone https://github.com/NoeJuzaAltis/exceldbbi.git
 ## Prerequisites
 `npm install`
 `(local) mongodb without auth (trusted network)`
-### Files you may want to create
+### Files/folders you need to create
+```
+.env
+authsessions.json
+conf.json
+results/ (folder)
+uploads/ (folder)
+```
+### Files you may want to fill
 `.env` <- with the environement variables (app restart required)
 ```
 ADMINUSR=youradminuser
