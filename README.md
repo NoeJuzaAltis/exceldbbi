@@ -1,5 +1,7 @@
 # exceldbbi
 Excel -> DB connection, upload data to DB whenever Excel file updated
+##Install
+```git clone https://github.com/NoeJuzaAltis/exceldbbi.git```
 ## Prerequisites
 `npm install`
 `(local) mongodb without auth (trusted network)`
@@ -35,9 +37,19 @@ ADMINPASS=youradminpassword
   ]
 }
 ```
-## DATA FORMAT IN THE EXCEL SHEET(S)
+### DATA FORMAT IN THE EXCEL SHEET(S)
 the data in your export sheet(s) should look like this :
 |  name1  |  name2  |  name3  |  name4  | etc... |
 | ---     | ---     | ---     | ---     | ----   |
 | value01 | value02 | value03 | value04 | etc... |
 | value11 | value12 | value13 | value14 | etc... |
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the Branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
